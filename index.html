@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apavu Darbnīca Nr. 1 — Premium apavu remonts Rīgas centrā</title>
+  <meta name="description" content="Premium apavu remonts Rīgas centrā. Restaurācija, papēžu un zolīšu maiņa, ādas kopšana. Apavi, kas izskatās un jūtas kā jauni." />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #1a1410;
+      --surface: #241b14;
+      --surface-2: #2d2219;
+      --text: #f5eee6;
+      --muted: #c4b3a3;
+      --line: #4a3a2d;
+      --brand: #e8c9a9;
+      --brand-dark: #cda57f;
+      --accent: #b7794b;
+      --success: #22c55e;
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 8px 40px rgba(0,0,0,.35);
+      --shadow-card: 0 10px 30px rgba(0,0,0,.28);
+      --container: min(1160px, 92vw);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 540px at 85% -10%, rgba(183,121,75,.18), transparent 60%),
+        radial-gradient(700px 500px at -10% 10%, rgba(255,235,215,.06), transparent 60%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0 2px, transparent 2px 8px),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .container { width: var(--container); margin-inline: auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(26,20,16,.72);
+      backdrop-filter: blur(16px) saturate(140%);
+      border-bottom: 1px solid rgba(232,201,169,.18);
+    }
+
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: -.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.25);
+      box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    }
+
+    .brand-name {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-name small {
+      font-size: 11px;
+      font-weight: 500;
+      color: #b3b3bc;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #d4d4d8;
+      font-size: 14px;
+    }
+
+    .nav a { text-decoration: none; transition: color .2s ease; }
+    .nav a:hover { color: #fff; }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform .24s ease, box-shadow .24s ease, filter .24s ease;
+      cursor: pointer;
+      letter-spacing: .01em;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.3) 45%, transparent 70%);
+      transform: translateX(-140%);
+      transition: transform .6s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .btn > * { position: relative; z-index: 1; }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--brand), var(--brand-dark));
+      color: #0b0b0c;
+      box-shadow: 0 8px 18px rgba(255,255,255,.14);
+      animation: softPulse 2.8s ease-in-out infinite;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 26px rgba(255,255,255,.2);
+      filter: brightness(1.02);
+    }
+
+    .btn-primary:hover::after,
+    .btn-ghost:hover::after { transform: translateX(140%); }
+
+    .btn:active {
+      transform: translateY(0) scale(.985);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.15);
+      color: #f5f5f7;
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.35);
+      border-color: rgba(255,255,255,.3);
+    }
+
+    .hero {
+      padding: 88px 0 64px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: end;
+      will-change: transform;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #d4d4d8;
+      background: rgba(255,255,255,.03);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    h1 {
+      margin: 16px 0 14px;
+      font-size: clamp(36px, 7vw, 78px);
+      line-height: .98;
+      letter-spacing: -.035em;
+      max-width: 13ch;
+    }
+
+    .lead {
+      margin: 0;
+      color: #d4d4d8;
+      font-size: clamp(16px, 2vw, 20px);
+      max-width: 58ch;
+    }
+
+    .hero-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .shop-shot {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0d0d0f;
+      box-shadow: var(--shadow-soft);
+      margin-top: 2px;
+    }
+
+    .shop-shot img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+
+    .shop-shot figcaption {
+      padding: 10px 14px;
+      color: #c9c9d1;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(232,201,169,.08), rgba(255,255,255,.02));
+      border: 1px solid rgba(232,201,169,.2);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .meta {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meta li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      color: #e4e4e7;
+    }
+
+    .meta b { color: #fff; }
+
+    .inline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.04);
+      color: #f4f4f5;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .chip:hover { border-color: rgba(255,255,255,.35); }
+
+    .chip.copy-btn.copied {
+      border-color: rgba(34,197,94,.6);
+      color: #bbf7d0;
+      background: rgba(34,197,94,.12);
+    }
+
+    @keyframes softPulse {
+      0%, 100% { box-shadow: 0 8px 18px rgba(255,255,255,.14); }
+      50% { box-shadow: 0 12px 26px rgba(255,255,255,.24); }
+    }
+
+    .kpis {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .kpi {
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(0,0,0,.2);
+      text-align: center;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 18px;
+      letter-spacing: -.02em;
+    }
+
+    section { padding: 30px 0; }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h3 {
+      margin: 0;
+      font-size: clamp(28px, 4.6vw, 42px);
+      line-height: 1.06;
+      letter-spacing: -.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 50ch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(232,201,169,.07), rgba(255,255,255,.015));
+      border: 1px solid rgba(232,201,169,.18);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px) scale(.985);
+      transition: opacity .7s ease, transform .7s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .card h4 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      letter-spacing: -.01em;
+    }
+
+    .card p { margin: 0; color: #d4d4d8; }
+
+    .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.04);
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .step {
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid rgba(232,201,169,.18);
+      background: rgba(255,245,230,.03);
+    }
+
+    .step .n {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .step h5 { margin: 0 0 6px; font-size: 16px; }
+    .step p { margin: 0; color: #d4d4d8; font-size: 14px; }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-template-rows: 220px 220px;
+      gap: 12px;
+    }
+
+    .gallery .item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0b0b0c;
+      box-shadow: var(--shadow-card);
+    }
+
+    .gallery .item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .gallery .item.big { grid-row: 1 / 3; }
+
+    .map-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow-soft);
+      background: #0a0a0a;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 380px;
+      border: 0;
+      display: block;
+    }
+
+    .quote {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: -.01em;
+      color: #f4f4f5;
+    }
+
+    .author {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      margin: 36px 0 8px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      background:
+        radial-gradient(500px 200px at 90% 10%, rgba(139,92,246,.26), transparent 60%),
+        rgba(255,255,255,.03);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .cta h3 {
+      margin: 0;
+      font-size: clamp(24px, 4vw, 38px);
+      letter-spacing: -.02em;
+      line-height: 1.05;
+    }
+
+    .cta p { margin: 8px 0 0; color: #d4d4d8; }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 42px;
+      padding: 20px 0 36px;
+      color: #a1a1aa;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1080px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-3, .reviews { grid-template-columns: 1fr 1fr; }
+      .process { grid-template-columns: 1fr 1fr; }
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 220px 220px;
+      }
+      .gallery .item.big { grid-row: span 2; }
+      h1 { max-width: 17ch; }
+    }
+
+    @media (max-width: 740px) {
+      .nav { display: none; }
+      .topbar-inner { min-height: 64px; }
+      .hero { padding-top: 56px; }
+      .grid-3, .reviews, .process { grid-template-columns: 1fr; }
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: 220px 220px 220px;
+      }
+      .gallery .item.big { grid-row: auto; }
+      .map-wrap iframe { height: 300px; }
+      .cta { padding: 22px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card, .step, .panel, .cta { transition: transform .25s ease, border-color .25s ease; }
+      .card:hover, .step:hover, .panel:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255,255,255,.22);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .btn,
+      .btn::after,
+      .btn-primary {
+        transition: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <img class="brand-logo" src="assets/logo-real.jpg" alt="Apavu Darbnīca Nr.1 logotips" />
+        <span class="brand-name">Apavu Darbnīca Nr. 1<small>Rīgas centrs</small></span>
+      </div>
+      <nav class="nav" aria-label="Galvenā navigācija">
+        <a href="#pakalpojumi">Pakalpojumi</a>
+        <a href="#process">Kā strādājam</a>
+        <a href="#galerija">Galerija</a>
+        <a href="#karte">Karte</a>
+        <a href="#atsauksmes">Atsauksmes</a>
+        <a href="#kontakti">Kontakti</a>
+      </nav>
+      <a class="btn btn-primary" href="tel:+37126826119" aria-label="Zvanīt darbnīcai">Zvanīt</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="kontakti">
+      <div>
+        <div class="eyebrow">Rīgas centrs · Tērbatas iela 57 · Īsta apavu darbnīca</div>
+        <h1>Ienāc darbnīcā. Izej ar apaviem kā no jauna.</h1>
+        <p class="lead">Te viss ir kā īstā meistara darbnīcā — āda, instrumenti, roku darbs un precizitāte. No papēžiem un zolītēm līdz smalkai restaurācijai, katrs pāris tiek sakopts ar cieņu pret materiālu.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+37126826119">📞 +371 26 826 119</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Apavu+darbn%C4%ABca+Nr.1%2C+T%C4%93rbatas+57%2C+R%C4%ABga" target="_blank" rel="noopener">📍 Atvērt kartē</a>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Kontaktu informācija">
+        <h2>Informācija</h2>
+        <ul class="meta">
+          <li>
+            <span>📍</span>
+            <div>
+              <b>Adrese:</b> Tērbatas iela 57, Rīga
+              <div class="inline-actions">
+                <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Apavu+darbn%C4%ABca+Nr.1%2C+T%C4%93rbatas+57%2C+R%C4%ABga" target="_blank" rel="noopener">Atvērt kartē</a>
+                <button class="chip copy-btn" type="button" data-copy="Tērbatas iela 57, Rīga">Kopēt adresi</button>
+              </div>
+            </div>
+          </li>
+          <li><span>🕘</span><div><b>Darba laiks:</b> P.-Pk. 09:00–18:00</div></li>
+          <li><span>⚡</span><div><b>Steidzamie darbi:</b> pēc vienošanās</div></li>
+          <li>
+            <span>📞</span>
+            <div>
+              <b>Tālrunis:</b> +371 26 826 119
+              <div class="inline-actions">
+                <a class="chip" href="tel:+37126826119">Zvanīt</a>
+                <button class="chip copy-btn" type="button" data-copy="+37126826119">Kopēt numuru</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span>🌐</span>
+            <div>
+              <b>Facebook:</b>
+              <div class="inline-actions">
+                <a class="chip" href="https://www.facebook.com/apavudarbnica/" target="_blank" rel="noopener">Atvērt Facebook lapu</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="kpis" aria-label="Galvenie rādītāji">
+          <div class="kpi"><strong>4.5★</strong><span>Vērtējums</span></div>
+          <div class="kpi"><strong>100+</strong><span>Atsauksmes</span></div>
+          <div class="kpi"><strong>1 diena</strong><span>Ātri darbi</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section aria-label="Darbnīcas foto" class="reveal">
+      <figure class="shop-shot">
+        <img src="assets/work-1-real.jpg" alt="Apavu Darbnīca Nr.1 darbnīcā notiek apavu restaurācija" loading="lazy" />
+        <figcaption>Reāls foto no Apavu darbnīca Nr.1 Facebook lapas galerijas.</figcaption>
+      </figure>
+    </section>
+
+    <section id="pakalpojumi" class="reveal">
+      <div class="section-head">
+        <h3>Darbnīcas pakalpojumi ikdienai un mīļākajiem pāriem</h3>
+        <p>No ātriem ikdienas labojumiem līdz rūpīgai restaurācijai — viss vienuviet, vienā īstā apavu darbnīcā.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon">🔨</div>
+          <h4>Papēžu un zolīšu maiņa</h4>
+          <p>Nodiluma novēršana ar kvalitatīviem materiāliem ikdienas un klasiskajiem apaviem.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🪡</div>
+          <h4>Šuvju un ādas restaurācija</h4>
+          <p>Precīza atjaunošana, kas uzlabo vizuālo kvalitāti un pagarina apavu kalpošanas laiku.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🧰</div>
+          <h4>Rāvējslēdzēji un furnitūra</h4>
+          <p>Funkcionālu elementu nomaiņa bez kompromisiem estētikā vai uzticamībā.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="process" class="reveal">
+      <div class="section-head">
+        <h3>Kā notiek remonts</h3>
+        <p>4 soļi, lai process būtu ātrs un saprotams no pirmā zvana līdz gatavam pārim.</p>
+      </div>
+
+      <div class="process">
+        <article class="step">
+          <div class="n">01</div>
+          <h5>Nodošana</h5>
+          <p>Atnesiet apavus darbnīcā vai piezvaniet pirms ierašanās.</p>
+        </article>
+        <article class="step">
+          <div class="n">02</div>
+          <h5>Novērtējums</h5>
+          <p>Saņemat skaidru remonta plānu, termiņu un cenu diapazonu.</p>
+        </article>
+        <article class="step">
+          <div class="n">03</div>
+          <h5>Restaurācija</h5>
+          <p>Darbs tiek veikts ar uzmanību pret detaļām un materiāliem.</p>
+        </article>
+        <article class="step">
+          <div class="n">04</div>
+          <h5>Saņemšana</h5>
+          <p>Saņemat apavus gatavus valkāšanai — tīrus, sakoptus, atjaunotus.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="galerija" class="reveal">
+      <div class="section-head">
+        <h3>Darbu galerija</h3>
+        <p>Daži piemēri no apavu restaurācijas ikdienas — kvalitāte, kas redzama uzreiz.</p>
+      </div>
+      <div class="gallery">
+        <figure class="item big">
+          <img src="assets/work-1-real.jpg" alt="Apavu restaurācijas process darbnīcā" loading="lazy" />
+        </figure>
+        <figure class="item">
+          <img src="assets/work-2-real.jpg" alt="Darbnīcas meistara veikts apavu remonts" loading="lazy" />
+        </figure>
+        <figure class="item">
+          <img src="assets/work-3-real.jpg" alt="Atjaunoti apavi pēc remonta" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <section id="karte" class="reveal">
+      <div class="section-head">
+        <h3>Atrast mūs ir vienkārši</h3>
+        <p>Darbnīca atrodas Rīgas centrā, Tērbatas ielā 57. Atveriet karti un atnāciet ar saviem apaviem.</p>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          title="Apavu Darbnīca Nr. 1 atrašanās vieta kartē"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Apavu%20darbn%C4%ABca%20Nr.1%2C%20T%C4%93rbatas%2057%2C%20R%C4%ABga&output=embed">
+        </iframe>
+      </div>
+    </section>
+
+    <section id="atsauksmes" class="reveal">
+      <div class="section-head">
+        <h3>Klientu uzticība ir mūsu standarts</h3>
+        <p>Reāla reputācija veidojas no stabila rezultāta, nevis skaļiem solījumiem.</p>
+      </div>
+      <div class="reviews">
+        <article class="card">
+          <p class="quote">“Kurpes izskatījās kā jaunas. Ļoti precīzs darbs un forša komunikācija.”</p>
+          <p class="author">— Kliente no centra</p>
+        </article>
+        <article class="card">
+          <p class="quote">“Viss laikā, bez pārsteigumiem un ar tiešām labu kvalitāti.”</p>
+          <p class="author">— Regulārs klients</p>
+        </article>
+        <article class="card">
+          <p class="quote">“Šī ir vieta, kur uzticēt labus apavus. Rekomendēju.”</p>
+          <p class="author">— Klients no Rīgas</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta reveal" aria-label="Aicinājums sazināties">
+      <div>
+        <h3>Jūtieties kā savā uzticamajā apavu darbnīcā.</h3>
+        <p>Piezvaniet, aprakstiet problēmu, un meistars uzreiz pateiks labāko risinājumu un termiņu.</p>
+      </div>
+      <a class="btn btn-primary" href="tel:+37126826119">Zvanīt tagad</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Apavu Darbnīca Nr. 1 · Tērbatas iela 57, Rīga · +371 26 826 119
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const text = btn.getAttribute('data-copy') || '';
+        if (!text) return;
+
+        try {
+          await navigator.clipboard.writeText(text);
+          const original = btn.textContent;
+          btn.textContent = 'Nokopēts ✓';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('copied');
+          }, 1300);
+        } catch {
+          const original = btn.textContent;
+          btn.textContent = 'Neizdevās';
+          setTimeout(() => (btn.textContent = original), 1200);
+        }
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach((el) => revealObserver.observe(el));
+
+    const hero = document.querySelector('.hero');
+    const onScroll = () => {
+      if (!hero) return;
+      const y = Math.min(window.scrollY, 220);
+      hero.style.transform = `translateY(${y * 0.04}px)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  </script>
+</body>
+</html>
